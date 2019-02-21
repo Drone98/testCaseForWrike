@@ -16,14 +16,14 @@ public class FormPage extends BasePage {
          * Я заметил что CSS selector кнопок, являющихся ответом на один вопрос, отличается лишь одной цифрой.
          * Чтобы реализовать рандомный выбор ответов, я приписывал отличающуюся цифру, генерируя её случайно.
          */
-        Random random= new Random();
+        Random random = new Random();
         int randomAnswer1 = random.nextInt(2) + 1;
         int randomAnswer2 = random.nextInt(5) + 1;
         int randomAnswer3 = random.nextInt(3) + 1;
 
         driver.findElement(By.cssSelector("body > div.wg-layout.wg-layout--outline > main > div > div > " +
                 "div.section.section-resend-main.section-resend-main-va.section-resend-main--survey > div > " +
-                "div.wg-cell.wg-cell--md-6.wg-cell--lg-7 > div > form > div:nth-child(6) > label:nth-child("+
+                "div.wg-cell.wg-cell--md-6.wg-cell--lg-7 > div > form > div:nth-child(6) > label:nth-child(" +
                 String.valueOf(randomAnswer1) +
                 ") > button")).click();
 
@@ -86,17 +86,17 @@ public class FormPage extends BasePage {
      * сделать его копию.
      */
     public File checkTwitterIcon(WebElement buttonTwitter) {
-        return((TakesScreenshot) buttonTwitter)
+        return ((TakesScreenshot) buttonTwitter)
                 .getScreenshotAs(OutputType.FILE);
     }
 
     public String checkTwitterLink(WebElement buttonTwitter) {
         buttonTwitter.click();
-        for(String winHandle : driver.getWindowHandles()){
+        for (String winHandle : driver.getWindowHandles()) {
             driver.switchTo().window(winHandle);
         }
         wait.until(ExpectedConditions.titleIs("Wrike (@wrike) | Твиттер"));
-        return  driver.getCurrentUrl();
+        return driver.getCurrentUrl();
     }
 
 }

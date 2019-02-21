@@ -21,7 +21,7 @@ public class FirstTest {
     private static WebDriver driver;
 
     @BeforeClass
-    public static void setUp(){
+    public static void setUp() {
         System.setProperty("webdriver.chrome.driver", "C:\\Учёба\\TestCases\\chromedriver.exe");
         driver = new ChromeDriver();
     }
@@ -85,7 +85,7 @@ public class FirstTest {
             sourceChannel = new FileInputStream(source).getChannel();
             destChannel = new FileOutputStream(dest).getChannel();
             destChannel.transferFrom(sourceChannel, 0, sourceChannel.size());
-        }finally{
+        } finally {
             assert sourceChannel != null;
             sourceChannel.close();
             assert destChannel != null;
@@ -103,7 +103,7 @@ public class FirstTest {
         System.out.println("test number 4");
         FormPage formPage = new FormPage(driver);
 
-        File dest = new File("C:\\Program Files\\newOne.png");
+        File dest = new File("newOne.png");
         try {
             copyFileUsingChannel(formPage.checkTwitterIcon(formPage.findButtonInTheSiteFooter()), dest);
         } catch (IOException e) {
